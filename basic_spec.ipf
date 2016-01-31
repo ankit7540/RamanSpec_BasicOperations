@@ -1,3 +1,5 @@
+//Select multiple waves in the data-browser and then use the command in the command window to use the function.
+//Please edit the code to suit your needs.
 
  function  averall ()
  string nam5 ; variable we1
