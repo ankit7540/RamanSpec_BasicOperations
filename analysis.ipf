@@ -61,3 +61,68 @@ end
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//	Find the integral in certain region of the spectra in a set of spectra given
+//	The region for integral is mentioned in the procedure
+//Parameters:
+//	xwave= xaxis in points scaling againt which  areaxy works ( or trapezoidal integration, Reimann Integral).
+//	n = number of waves to be analyzed
+
+function  PeakAutoIntegrate_over_waves(xwave, n)
+wave xwave
+variable n
+make /o /D /n=(n,9) data_output=0 ;  // for 8 peaks 
+
+wave dout=data_output 
+
+variable we1
+string nam5
+variable i
+variable ar0,ar1,ar2,ar3,ar4,ar5,ar6,ar7
+
+for (we1=0; we1<(n+1); we1=we1+1)
+
+	nam5 = getbrowserselection(we1)
+  		if (strlen(nam5) == 0)
+			break
+		endif
+	
+	wave wn=$nam5
+
+			wave twv=wn
+			//integrated area of the peaks (6 peaks) from the spectra.
+			// position might be needed to change for specific spectra.
+			 ar0=areaxy(xwave,twv,210,228)
+			 ar1=areaxy(xwave,twv, 298, 323)
+			 ar2=areaxy(xwave,twv, 394,419)
+			 ar3 = areaxy(xwave,twv, 709,733)
+			 ar4=areaxy(xwave,twv, 820,844)
+			ar5 = areaxy(xwave,twv, 930,954)
+			ar6 = areaxy(xwave,twv, 1035, 1059)
+			ar7 = areaxy(xwave,twv, 1142, 1166)
+
+	i= we1
+
+	
+	
+	dout[i][0]=we1 // just the value of the variable or the peak number starting from zero.
+	dout[i][1]=(ar0)
+	dout[i][2]=(ar1)
+	dout[i][3]=(ar2)
+	dout[i][4]=(ar3)
+	dout[i][5]=(ar4)
+	dout[i][6]=(ar5)
+	dout[i][7]=(ar6)
+	dout[i][8]=(ar7)
+	//dout[i][6]=(ar5)
+	string sn=nameofwave(wn)
+	//
+endfor
+
+
+end
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
