@@ -62,14 +62,14 @@ Function Apply_yOffset_vmax(graphNameStr, offset_value)
 		string name=NameOfWave(w)
 		WaveStats/Q  w
 		Wave M_WaveStats
-		V_max_prev=V_max
+		
 		
 		if (i>0)
-			offs=offs+V_max_prev + offset_value
+			offs=offs+V_max_prev + offset_value	// dynamic offset
 			ModifyGraph offset($name)={0,( offs )}
 		endif
 		print i, NameOfWave(w),"y-offset =",(offs)," applied" 
-
+		V_max_prev=V_max	// save vmax to a variable
 	endfor
 End
 
