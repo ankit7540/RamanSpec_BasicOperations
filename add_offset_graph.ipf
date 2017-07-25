@@ -54,23 +54,24 @@ Function Apply_yOffset_vmax(graphNameStr, offset_value)
 	variable offs
 	
 	// 	loop running over each trace
-	for(i=0; i< numTraces ; i=i+1)
-		String traceNameStr = StringFromList(i, list)
-		Wave w = TraceNameToWaveRef(graphNameStr, traceNameStr )
+	if (i>0)
+		for(i=0; i< numTraces ; i=i+1)
+			String traceNameStr = StringFromList(i, list)
+			Wave w = TraceNameToWaveRef(graphNameStr, traceNameStr )
 	
-		//	Print i, NameOfWave(w)
-		string name=NameOfWave(w)
-		WaveStats/Q  w
-		Wave M_WaveStats
-		
-		
-		if (i>0)
-			offs=offs+V_max_prev + offset_value	// dynamic offset
-			ModifyGraph offset($name)={0,( offs )}
-		endif
-		print i, NameOfWave(w),"y-offset =",(offs)," applied" 
-		V_max_prev=V_max	// save vmax to a variable
-	endfor
+			//	Print i, NameOfWave(w)
+			string name=NameOfWave(w)
+			WaveStats/Q  w	//performed for obtaining the V_max in a 1D wave
+				
+			if (i>0)
+				offs=offs+V_max_prev + offset_value	// dynamic offset
+				ModifyGraph offset($name)={0,( offs )}
+			endif
+			print i, NameOfWave(w),"y-offset =",(offs)," applied" 
+			V_max_prev=V_max	// save vmax to a variable
+		endfor
+	else
+	abort "Error : Only one trace on the graph. Offset cannot be applied !"
 End
 
 //------------------------------------------------------------------------------------------------------
