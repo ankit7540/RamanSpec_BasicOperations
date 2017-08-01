@@ -7,3 +7,5 @@ This repository contains the procedures for mentioned job needed in day to day a
 
 3. analysis.ipf : A set of procedures for analysis of waves.
   a) function = standard_dev_eachPnt_spectra : takes a set of waves, calculate the mean and std dev (1 sigma) and % error at point of the wave.
+  
+4. add_offset.ipf : Two functions therein. One applies a constant offset to a traces on a plot ( offset is defined manually). Second, the offset is calculated such that two traces will never touch each other.
