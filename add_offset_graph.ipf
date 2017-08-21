@@ -72,6 +72,7 @@ Function Apply_yOffset_vmax(graphNameStr, offset_value)
 		endfor
 	else
 	abort "Error : Only one trace on the graph. Offset cannot be applied !"
+	endif
 End
 
 //------------------------------------------------------------------------------------------------------
