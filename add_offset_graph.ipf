@@ -8,21 +8,24 @@ Function Apply_yOffset(graphNameStr, offset_value)
 	
 	String graphNameStr			// "" for top graph
  	variable offset_value
+ 	
+ 	String list
+ 	Variable numTraces
+ 	Variable i, V_max_prev=0
+ 	String traceNameStr
+ 	String name
  
-	String list = TraceNameList(graphNameStr,";",1)	// Ignore traces that belong to contour plots
-	Variable numTraces = ItemsInList(list)
+	list = TraceNameList(graphNameStr,";",1)	// Ignore traces that belong to contour plots
+	numTraces = ItemsInList(list)
 	print numTraces, "traces in selected graph" // this is the number of traces in the graph
-	
-	
-	Variable i, V_max_prev=0
 	
 	// 	loop running over each trace
 	for(i=0; i< numTraces ; i=i+1)
-		String traceNameStr = StringFromList(i, list)
+		traceNameStr = StringFromList(i, list)
 		Wave w = TraceNameToWaveRef(graphNameStr, traceNameStr )
 	
 		//	Print i, NameOfWave(w)
-		string name=NameOfWave(w)
+		name=NameOfWave(w)
 		WaveStats/Q  w
 		Wave M_WaveStats
 
@@ -44,24 +47,27 @@ Function Apply_yOffset_vmax(graphNameStr, offset_value)
 	
 	String graphNameStr			// "" for top graph
  	variable offset_value
+ 	
+ 	String list
+ 	Variable numTraces
+ 	Variable i, V_max_prev=0
+ 	variable offs
+ 	String traceNameStr
+ 	String name
  
-	String list = TraceNameList(graphNameStr,";",1)	// Ignore traces that belong to contour plots
-	Variable numTraces = ItemsInList(list)
+	list = TraceNameList(graphNameStr,";",1)	// Ignore traces that belong to contour plots
+	numTraces = ItemsInList(list)
 	print numTraces, "traces in selected graph" // this is the number of traces in the graph
-	
-	
-	Variable i, V_max_prev=0
-	variable offs
 	
 	// 	loop running over each trace
 	if (i>0)
 		for(i=0; i< numTraces ; i=i+1)
-			String traceNameStr = StringFromList(i, list)
+			traceNameStr = StringFromList(i, list)
 			Wave w = TraceNameToWaveRef(graphNameStr, traceNameStr )
 	
 			//	Print i, NameOfWave(w)
-			string name=NameOfWave(w)
-			WaveStats/Q  w	//performed for obtaining the V_max in a 1D wave
+			name=NameOfWave(w)
+			WaveStats/Q  w	 //performed for obtaining the V_max in a 1D wave
 				
 			if (i>0)
 				offs=offs+V_max_prev + offset_value	// dynamic offset
