@@ -18,7 +18,7 @@ variable rows
 variable cols
 
 // to get the number of rows
-sprintf  wname, "%s%g",prefix, 0
+sprintf  wname, "%s%g",prefix, starting_index
 wave inpwave = $wname
 rows=dimsize(inpwave,0)
 
