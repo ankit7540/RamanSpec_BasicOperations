@@ -1,9 +1,18 @@
 //------------------------------------------------------------
 
-// to substitute the numerical value for cosmic noise at index-pixel 
+// To substitute the numerical value for cosmic noise at index-pixel 
 //	with the fit value, after setting -2 to +2 y values to nan around 
 //	the index
 
+// Examples :  
+//		remove_cosmic_noise( spectra, 925 , 7 )
+//			where spectra = 1D spectra wave
+//			925 = index for the noise, max value preferred
+//			7	= use 7 data points around the index, hence
+//				   total 14 data points considered
+
+// Exceptions : 
+//	when working near the edges of the spectra
 
 function remove_cosmic_noise( wave1D, index , cutoff )
 	wave wave1D
