@@ -19,7 +19,7 @@ function analyze_2D_data(input2D)
 	nRows=dimsize(input2D, 0)
 	nCols=dimsize(input2D, 1)	
 	
-	print nRows, nCols
+	print "dimensions:",nRows, nCols
 	
 	make /o /d /n=(nCols, 5) output
 	make /FREE /d /n=(nRows) temp
@@ -103,8 +103,7 @@ function analyze_2D_data(input2D)
 	err2 [] = sqrt( output[p][2] ) + 0.005 *output[p][2]
 	err3 [] = sqrt( output[p][3] ) + 0.005 *output[p][3]
 	
-	
-	wave angle
+	//wave angle
 	//output[][0]=angle[p]
 	
 end
