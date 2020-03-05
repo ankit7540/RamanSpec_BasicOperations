@@ -1,6 +1,4 @@
-#pragma TextEncoding = "Windows-1252"
 #pragma rtGlobals=3		// Use modern global access method and strict wave access.
-#include <New Polar Graphs>
 #include <Multi-peak fitting 2.0>
 
 //-----------------------------------------------------------------------
@@ -24,7 +22,7 @@ function analyze_2D_data(input2D)
 	print nRows, nCols
 	
 	make /o /d /n=(nCols, 5) output
-	make /o /d /n=(nRows) temp
+	make /FREE /d /n=(nRows) temp
 	make /o /d /n=(nRows, nCols) processed
 	make /o /d /n=(nRows) xaxis=p
 	
@@ -57,10 +55,12 @@ function analyze_2D_data(input2D)
 		
 		avg1=(temp[(a1)] + temp[(a2)])/2
 		
+		// remove the mean, similar to remove baseline
 		temp=temp-avg1
 		
 		band1=areaxy(xaxis, temp, a1, a2 )
 		
+		// assign temp to 2D (for checking)
 		processed[][i]=temp[p]
 	
 		//-------------------------------
@@ -70,8 +70,8 @@ function analyze_2D_data(input2D)
 				
 		avg2=(temp[(b1)] + temp[(b2)])/2
 		
+		// remove the mean, similar to remove baseline
 		temp=temp-avg2
-		//display temp
 		
 		band2=areaxy(xaxis, temp, b1, b2 )
 		//-------------------------------
@@ -79,11 +79,10 @@ function analyze_2D_data(input2D)
 		
 		temp=input2D [p][i]
 		
-		
 		avg3=(temp[(c1)] + temp[(c2)])/2
 		
+		// remove the mean, similar to remove baseline
 		temp=temp-avg3
-		//display temp
 		
 		band3=areaxy(xaxis, temp, c1, c2 )
 		//-------------------------------
