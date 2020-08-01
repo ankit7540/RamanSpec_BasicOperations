@@ -1,4 +1,3 @@
-
 //----------------------------------------------------------------------------------------------------------------
 // To get the average of 2D input
 
@@ -11,13 +10,13 @@ function do_average(input)
 	
 	nRows=dimsize(input, 0)
 	nCols=dimsize(input, 1)	
-	print nRows, nCols
+
 	
 	string name=nameofwave (input)
 	
 	string new_name
 	sprintf new_name, "%s_avg",name
-	print new_name
+	printf "\t%s\t%g\t%g\r" new_name, nRows, nCols
 	
 	make /o/d /n=(nRows) $new_name
 	wave output=$new_name
@@ -30,6 +29,8 @@ function do_average(input)
 	
 	output=temp / nCols
 	
+	killwaves /Z temp
+	
 end
 
 
@@ -40,60 +41,46 @@ end
 
 
 function  averall ()
-string nam5 ; variable we1
-variable x2=0; variable ccount=0
- 
-string cdf =getdatafolder(1)
-print cdf
 
-for (we1=0; we1<1000; we1=we1+1)
- 	nam5 = getbrowserselection(we1)
-	print nam5
-	variable str ; string emp=""
-	str = stringmatch(nam5,emp)
-//	printf "stringMatch result is : %g \r", str
- 	if (str==1)
- 		break
- 	endif 
- 		 
-	wave wav3=$nam5
-	// print NameOfWave(wav3)
-	string tname=NameOfWave(wav3)+"_avg"
-//	printf "Num Type of we1: %g \r" , numtype(we1)
+	string nameV 
+ 	variable index // for initial count of waves
+ 	variable i
+ 	
 
-	//	print tname					//for debugging
-	//	variable ren = strlen(nam5)	//for debugging
-	//	x2=numtype(ren)			//for debugging
-	//	print ren , x2				//for debugging
+	string cdf =getdatafolder(1)
+	printf "\tPresent folder : %s\r" cdf
+	
+	
+	// Count the number of folders
+	do
+		nameV  = getbrowserselection(index)
+		
+		if (strlen(nameV ) == 0)
+			break
+		endif
+					
+ 		index += 1
+	while(1)
+	
+	print "\tNumber of waves: ", index	
 
-	ccount=ccount+1				//counter of cycles
+for (i=0; i<index; i=i+1)
+ 	nameV = getbrowserselection(i)
+ 	//print i, namev
+	wave selected=$nameV
+	variable cols 
+ 	cols		=	dimsize (selected, 1) 
 
-	variable cols, rows , c  
- 	cols		=	dimsize (wav3,1) 
- 	rows	=	dimsize(wav3,0)
-
- 	make /o/n=(rows) $tname
- 	wave tr = $tname
- 
- 	for (c=0 ;  c < cols ; c = c+1)
- 		tr=tr[p] + wav3[p][c]
- 	endfor
- 		tr=tr[p]/cols
-		display /w=(430,220,850,510) /k=0 tr
- 		textbox /C/N =text0/A=MC "Averaged_" + NameOfWave(wav3)
-  		print cols,rows, c
-
- 	killstrings /Z tname
- 
+ 	if (cols>1)
+ 		do_average(selected)
+ 	else
+ 		printf "\t%s is 1D. Skipping.\r", NameOfWave(selected)
+ 	endif
 endfor 
 
 //	print "Cycle ended" ;
-printf "waves processed : %g \r" ccount
+printf "\tWaves processed : %g \r", index
 
-killvariables /Z ccount,y7,y6,y5,x2,we1,str
-killstrings /Z nam5,emp
 end 
 
 //----------------------------------------------------------------------------------------------------------------
-
-
