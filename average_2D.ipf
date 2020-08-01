@@ -36,8 +36,9 @@ end
 
 //----------------------------------------------------------------------------------------------------------------
 
-//Select multiple waves in the data-browser and then use the command in the command window to use the function.
-//Please edit the code to suit your needs.
+//	Select multiple waves in the data-browser and then use the command in the 
+//	command window to use the function.
+//	Please edit the code to suit your needs.
 
 
 function  averall ()
@@ -45,11 +46,10 @@ function  averall ()
 	string nameV 
  	variable index // for initial count of waves
  	variable i
+ 	variable cols
  	
-
 	string cdf =getdatafolder(1)
 	printf "\tPresent folder : %s\r" cdf
-	
 	
 	// Count the number of folders
 	do
@@ -64,22 +64,22 @@ function  averall ()
 	
 	print "\tNumber of waves: ", index	
 
-for (i=0; i<index; i=i+1)
- 	nameV = getbrowserselection(i)
- 	//print i, namev
-	wave selected=$nameV
-	variable cols 
- 	cols		=	dimsize (selected, 1) 
-
- 	if (cols>1)
- 		do_average(selected)
- 	else
+	for (i=0; i<index; i=i+1)
+	 	nameV = getbrowserselection(i)
+	 	//print i, namev
+		wave selected=$nameV
+			 
+	 	cols		=	dimsize (selected, 1) 
+	
+	 	if (cols>1)
+	 		do_average(selected)
+	 	else
  		printf "\t%s is 1D. Skipping.\r", NameOfWave(selected)
- 	endif
-endfor 
+	 	endif
+	
+	endfor 
 
-//	print "Cycle ended" ;
-printf "\tWaves processed : %g \r", index
+	printf "\tWaves processed : %g \r", index
 
 end 
 
