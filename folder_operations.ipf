@@ -1,3 +1,5 @@
+#pragma TextEncoding = "Windows-1252"
+#pragma rtGlobals=3		// Use modern global access method and strict wave access.
 
 
 
@@ -96,7 +98,7 @@ Function extract_data_from_subfolders (name)
 		
 		setdatafolder objName
 
-		wave data='Dev1/ai1'
+		wave data=$name
 		nRows= dimsize(data, 0)
 		index2=index2+1
 	while(index2 == 0)
@@ -125,7 +127,7 @@ Function extract_data_from_subfolders (name)
 		setdatafolder folder_path
 		String cdf = GetDataFolder(1)
 		string wname
-		sprintf wname, "%s'Dev1/ai1'",cdf
+		sprintf wname, "%s'%s'",cdf, name
 		//print wname
 		
 		wave data=$wname
