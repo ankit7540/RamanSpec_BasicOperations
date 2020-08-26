@@ -1,8 +1,10 @@
 // *************************************************************
 
 // Function to merge 1D waves to a 2D wave while doing white light 
-//	calibration on each 1D wave in a loop
+// intensity correction	operation on each 1D wave in a loop (divide by white light spectra)
 
+// Example
+// merge1D_to_2D( "data_", 0, 5 , white_light, "output" )
 
 function merge1D_to_2D( prefix, starting_index, last_index , WLwave, FN )
 
@@ -10,7 +12,7 @@ string prefix				// string prefix for series of 1D waves
 variable starting_index	// first index
 variable last_index		// last index
 wave WLwave 			// Normalized white light wave
-string FN				// newfoldername
+string FN				// newfoldername (string)
 
 string wname
 variable i
