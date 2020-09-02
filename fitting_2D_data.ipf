@@ -1,6 +1,6 @@
 
 // fit 2D data to a Gaussian + line function and save coefs in a result wave 
-
+// custom fit function defined below is used for this fit
 
 
 function fit_2D_data (input2D, xwave)
@@ -12,7 +12,7 @@ function fit_2D_data (input2D, xwave)
 	
 	print nRows, nCols
 	
-	make /o /n=(5, nCols) result
+	make /o /n=(5, nCols) result	// for 5 parameters
 	
 	variable i 
 	print "starting fit now"
@@ -24,9 +24,8 @@ function fit_2D_data (input2D, xwave)
 		FuncFit gauss_with_line W_coef temp /X=xwave
 		
 		print ("--------------------------------")
-		// saving result 
-		result [] [i] = W_coef[p]
-		
+		// saving fit coef values to result 
+		result [] [i] = W_coef[p] 
 		
 	endfor 
 	
