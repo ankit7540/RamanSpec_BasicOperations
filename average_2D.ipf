@@ -51,10 +51,9 @@ function  averall ()
 	string cdf =getdatafolder(1)
 	printf "\tPresent folder : %s\r" cdf
 	
-	// Count the number of folders
+	// Count the number of files
 	do
 		nameV  = getbrowserselection(index)
-		
 		if (strlen(nameV ) == 0)
 			break
 		endif
