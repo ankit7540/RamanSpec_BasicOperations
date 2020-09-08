@@ -1,35 +1,6 @@
 
 // -----------------------------------------------------------------------------------------
 
-// To delete one column (specified via col_index) from a 2D wave 
-// Only removes if the original number of columns is more than 3 in the
-// 	2D wave.
-
-// This operates on a single 2D wave 
-
-// returns the original modified wave 
-function remove_col_from_2D (input2D, col_index)
-	wave input2D
-	variable col_index
-	
-	variable nCols
-	nCols = dimsize (input2D, 1)
-	
-	// only if nCols > cutoff operation is done
-	// edit cutoff for control of how small 2D waves are edited
-	variable cutoff =3
-	
-	if (nCols > cutoff) 
-		printf "\t    Removing col %g from %s \r", col_index, nameofwave(input2D)
-		DeletePoints/M=1 col_index ,1, input2D	// delete col operation
-		// delete 1 column along axis=1 which is col
-	else
-		printf "\t    Not touching %s, nCols = %g \r",  nameofwave(input2D), nCols			 	
-	endif
-end	
-
-// -----------------------------------------------------------------------------------------
-
 // To remove a column from multiple 2D wave 
 
 function  remove1col_from_selected_2D ( col_index )
@@ -73,3 +44,33 @@ function  remove1col_from_selected_2D ( col_index )
 end 
 
 //----------------------------------------------------------------------------------------------------------------
+
+
+// To delete one column (specified via col_index) from a 2D wave 
+// Only removes if the original number of columns is more than 3 in the
+// 	2D wave.
+
+// This operates on a single 2D wave 
+
+// returns the original modified wave 
+function remove_col_from_2D (input2D, col_index)
+	wave input2D
+	variable col_index
+	
+	variable nCols
+	nCols = dimsize (input2D, 1)
+	
+	// only if nCols > cutoff operation is done
+	// edit cutoff for control of how small 2D waves are edited
+	variable cutoff =3
+	
+	if (nCols > cutoff) 
+		printf "\t    Removing col %g from %s \r", col_index, nameofwave(input2D)
+		DeletePoints/M=1 col_index ,1, input2D	// delete col operation
+		// delete 1 column along axis=1 which is col
+	else
+		printf "\t    Not touching %s, nCols = %g \r",  nameofwave(input2D), nCols			 	
+	endif
+end	
+
+// -----------------------------------------------------------------------------------------
