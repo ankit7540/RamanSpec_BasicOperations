@@ -62,8 +62,12 @@ end
 // To split a 1D wave to sections which are then placed along the
 // columns of the output 2 D wave 
 
+//		(extra rows of 1D which do not fit in a column are not put in
+//		 in the 2D data, i.e.  1D [106 rows] -> 2D [10x10], 6 rows of 
+//		 data not in 2D)
+
 	
-	// RETURNS :  2D wave (returns a wave ref to output wave)
+// RETURNS :  2D wave (returns a wave ref to output wave)
 	
 function /WAVE split1D_to_2D (input, length)
 	wave input		// 1d wave
