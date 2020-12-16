@@ -1,10 +1,13 @@
 // *************************************************************
 
-// Function to merge 1D waves to a 2D wave while doing white light 
-// intensity correction	operation on each 1D wave in a loop (divide by white light spectra)
+// Function to merge 1D waves to a 2D wave while usng a broadband white light spectra for
+// intensity correction	operation on each 1D wave in a loop (division by white light spectra)
 
 // Example
-// merge1D_to_2D( "data_", 0, 5 , white_light, "output" )
+// merge1D_to_2D( "data_", 0, 5 , white_light, "output_folder" )
+//	This will process 1D waves as, data_0, data_1,...,data_5
+
+// creates the output in a new folder 
 
 function merge1D_to_2D( prefix, starting_index, last_index , WLwave, FN )
 
@@ -19,19 +22,19 @@ variable i
 variable rows
 variable cols
 
-// to get the number of rows
+// get the number of rows
 sprintf  wname, "%s%g",prefix, starting_index
 wave inpwave = $wname
 rows=dimsize(inpwave,0)
 
-// to get the number of cols
+// get the number of cols
 cols= last_index - starting_index + 1
 
 // make a 2D wave
-make /o /n=(rows,cols) output=0
+make /o /n=(rows,cols) output
 wave result=output
 
-make /o /n=(rows) temp=0
+make /o /n=(rows) temp
 wave temp=temp
 
 
