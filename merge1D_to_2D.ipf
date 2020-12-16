@@ -53,4 +53,44 @@ newdatafolder /o /S $FN 	// will make new folder and set is as present folder
 duplicate /o result, output_2D
 killwaves /Z temp, result // remove temporary waves
 end
+
 // *************************************************************
+// *************************************************************
+
+
+
+// To split a 1D wave to sections which are then placed along the
+// columns of the output 2 D wave 
+
+	
+	// RETURNS :  2D wave (returns a wave ref to output wave)
+	
+function /WAVE split1D_to_2D (input, length)
+	wave input		// 1d wave
+	variable length 	// length of the section ( == rows of 2D output)
+	
+	variable nRows = dimsize (input,0)
+	variable divn = (nRows/length)
+	variable nCols = floor (divn)  // number of columns in the 2D output
+	
+	make /o /d /n=(length, nCols) out
+	variable i, j
+	make /o /FREE /n=(length) temp
+	
+	for (i=0 ; i<nCols ; i=i+1)	
+	
+		for (j=0 ; j< length ; j=j+1)	
+			temp [j] = input [ j + i*length ]
+			//print ( j + i*length)
+		endfor			
+             //print "--"	
+	 	out [][i] = temp[p]
+		
+	endfor
+	
+	return	out 
+
+end		
+
+// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
