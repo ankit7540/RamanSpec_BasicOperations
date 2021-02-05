@@ -1,11 +1,10 @@
-
 #pragma rtGlobals=3		// Use modern global access method and strict wave access.
 
 
 //*************************************************************
 //*************************************************************
 
-// to print name of all waves in the current data folder
+// Print name of all waves in the current data folder
 
 Function PrintAllWaveNames()
 	String objName
@@ -23,7 +22,13 @@ End
 
 //*************************************************************
 //*************************************************************
-// to print name of all subfolders in the current data folder
+// Print name of all subfolders in the current data folder
+
+// Arguments :
+//	startingDFR , for example, root:
+//	level , for exmaple, 0 or 1
+
+// PrintDataFolderPaths( root:, 0)
 
 Function PrintDataFolderPaths(startingDFR, level)
     DFREF startingDFR

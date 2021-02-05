@@ -10,7 +10,7 @@
 // For each loaded file, a new folder is created in the databrowser
 // the column in the txt file is loaded as waves ( autonamed as the header)
 
-function load_all_txt_files()
+function loadTXT_files_all()
 
 	String s
 
@@ -49,6 +49,8 @@ function load_all_txt_files()
 		print folder_name
 
 		newdatafolder /o/s $folder_name
+
+		// /A=Auto, /J = delimited text, /W = header as name, /D=double precision
 		LoadWave /A /J /W /D  /P=path fileName;
 
 		setdatafolder savedDF

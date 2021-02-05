@@ -1,10 +1,12 @@
 
-
 //*************************************************************
 //*************************************************************
 
 // Extract data from a wave (having same name) in all subfolders and place in a 2D wave
-//		Argument : name of the wave, Example, "data1"
+//  along the columns
+
+//	Argument : name of the wave,
+//	For example, "data1"
 
 
 Function extract_data_from_subfolders (name)
@@ -57,7 +59,7 @@ Function extract_data_from_subfolders (name)
 	make /o /d /n=(nRows, index) output
 
 
-	// iterate over the folders and keep the wave in the 2D destination
+	// iterate over the folders and keep the wave in the 2D wave as the destination
 	index2=0
 	do
 		objName = GetIndexedObjNameDFR(dfr, 4, index2)
@@ -87,7 +89,7 @@ Function extract_data_from_subfolders (name)
 	while(index2 < index)
 
 	setdatafolder dfr
-	print "done."
+	print "\tdone."
 End
 
 //*************************************************************
