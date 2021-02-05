@@ -14,4 +14,7 @@ Question and suggestions are welcome via the Issues tab.
 
 ## Citing this repository
 
-Download citation file : [bibtex](https://github.com/ankit7540/RamanSpec_BasicOperations/blob/master/citation/RamanOps.bib) / [endnote](https://github.com/ankit7540/RamanSpec_BasicOperations/blob/master/citation/RamanOps.bib)
+Download citation file : [Bibtex](https://raw.githubusercontent.com/ankit7540/RamanSpec_BasicOperations/master/citation/RamanOps.bib) / [Endnote](https://raw.githubusercontent.com/ankit7540/RamanSpec_BasicOperations/master/citation/RamanOps.RIS)
+
+
+Save the file and open with the reference manager to add to the reference list.
