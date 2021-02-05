@@ -14,4 +14,4 @@ Question and suggestions are welcome via the Issues tab.
 
 ## Citing this repository
 
-Download citation file : bibtex / endnote
+Download citation file : [bibtex](https://github.com/ankit7540/RamanSpec_BasicOperations/blob/master/citation/RamanOps.bib) / [endnote](https://github.com/ankit7540/RamanSpec_BasicOperations/blob/master/citation/RamanOps.bib)
