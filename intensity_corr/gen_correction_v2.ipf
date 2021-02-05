@@ -52,7 +52,7 @@ function gen_C0_C1 ( ramanshift , laser_nm , wl_wave ,   norm_pnt , [ maskWave ]
 		print "\tMask wave is supplied. Using it.\r"
 		result = gen_C1_mask (ramanshift, laser_nm ,  wl_norm ,   norm_pnt , maskWave)
 	else	
-		print "\t Mask wave supplied. Working with full wave.\r"
+		print "\t Mask wave not supplied. Working with full wave.\r"
 		result = gen_C1(ramanshift, laser_nm ,  wl_norm ,  norm_pnt)
 	endif
 	//--------------------------------------------------------------
