@@ -1,11 +1,12 @@
 
-
 //-------------------------------------------------------------------------------------
 
 // to optmize the function defined below and determine k1 and k2
 
 //    optimize /A=0 /I=5 /M={0,0}  /X={init_k1, init_k2} /Y = 1e-3 function_name, wave w
 //    optimize /A=0 /I=5 /M={0,0}  /X={17.55, 1.26} /Y = 1e-3 error_func, temp
+
+// Check page V-614 (file page 1618) in the Igor Manual
 
 //-------------------------------------------------------------------------------------
 
@@ -17,11 +18,10 @@ function error_func ( w, k1, k2)
 	variable k1    // coef 1, to be optimized
 	variable k2    // coef 2, to be optimized
 
-  variable e
+  variable e      // to keep error value
 
 
-  // calling some other WAVE
-
+  // calling some other WAVES
 
 	wave w1
   wave w2
@@ -42,7 +42,6 @@ function error_func ( w, k1, k2)
 	// compute the difference
 	diff_1 = w1 - w3
 	diff_2 = w2 - w4
-
 
 
 	// take square value of difference vectors
