@@ -1,6 +1,8 @@
 
 //-------------------------------------------------------------------------------------
 // solving quadratic equation for each triplet value of a,b and c
+//  a, b and c are coefs for a quadratic equation
+//  ax^2 + bx + c = 0
 
 // returns a wave
 
