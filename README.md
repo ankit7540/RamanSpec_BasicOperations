@@ -16,4 +16,4 @@ Question and suggestions are welcome via the `Issues` tab.
 
 Citation is requested if the procedures are useful in your analysis. Save the file and open with the reference manager to add to the reference list.
 
-Download citation file : [Bibtex](https://raw.githubusercontent.com/ankit7540/RamanSpec_BasicOperations/master/citation/RamanOps.bib) / [Endnote](https://raw.githubusercontent.com/ankit7540/RamanSpec_BasicOperations/master/citation/RamanOps.RIS) (Use right click on the link and select 'Save link as')
+Download citation file : [Bibtex](https://raw.githubusercontent.com/ankit7540/RamanSpec_BasicOperations/master/citation/RamanOps.bib) / [Endnote](https://raw.githubusercontent.com/ankit7540/RamanSpec_BasicOperations/master/citation/RamanOps.RIS) (Right click on the link and select 'Save link as')
