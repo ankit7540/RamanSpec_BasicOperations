@@ -5,7 +5,7 @@ These three corrections for the intensity calibration steps are labelled as C0, 
 already corrected using C0 and C1. See the above paper for more details.  The total correction is given as  C0/(C1 * C2).
 
 The procedure file in this folder, `gen_correction_v2.ipf` has the function for generating the first two corrections, and returns : (C0/C1). For common Raman measurements where very high accuracy in the relative Raman 
-intensities is not reuired, this might suffice.
+intensities is not required, this might suffice.
 
 
 ----
