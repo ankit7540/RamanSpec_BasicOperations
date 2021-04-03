@@ -1,5 +1,3 @@
-#pragma TextEncoding = "UTF-8"
-#pragma rtGlobals=3		// Use modern global access method and strict wave access.
 
 
 // -------------------------------------------------------------------------------
@@ -10,7 +8,9 @@
 //    gen_C0_C1 ( x_wavenumber, 632.8 , root:whitelight  ,   670 , maskWave = mask1D  )
 //                  wave        laser_nm   wave             pixel   maskWave
 
-function gen_C0_C1 ( ramanshift , laser_nm , wl_wave ,   norm_pnt , [ maskWave ] )
+// returns :  intensity_corr : 1D wave which corresponds to (C0/C1), to be multiplied to the Raman spectra.
+
+function gen_C0_C1 ( ramanshift , laser_nm , wl_wave ,   norm_pnt , [ maskWave , set_mask_nan] )
 
 	wave ramanshift		// relative, vector
 	variable laser_nm		// laser wavelength, nm, scalar
@@ -18,6 +18,9 @@ function gen_C0_C1 ( ramanshift , laser_nm , wl_wave ,   norm_pnt , [ maskWave ]
 	variable norm_pnt		// normalization index, pnt, scalar
 	
 	wave maskWave //  optional, supply mask for wl fitting , for eg.  maskWave = mask_1D, vector
+	variable  set_mask_nan //  optional, 0 or 1. When set to 1, the masked region is set to nan in the output 
+							//    intensity_corr wave. When set to 0, intensity_corr wave is not modified for the mask
+							//    region.
 	
 	variable nPnts = dimsize(ramanshift, 0)
 	variable mid = nPnts/2
@@ -48,21 +51,34 @@ function gen_C0_C1 ( ramanshift , laser_nm , wl_wave ,   norm_pnt , [ maskWave ]
 	// wl spectra (subset)
 	variable result  // returned value is assigned to result
 	
-	if ( waveExists ( maskWave ))
-		print "\tMask wave is supplied. Using it.\r"
-		result = gen_C1_mask (ramanshift, laser_nm ,  wl_norm ,   norm_pnt , maskWave)
-	else	
+	// Determine if the optional parameters were supplied
+	if( ParamIsDefault(maskWave) ) 
+		
 		print "\t Mask wave not supplied. Working with full wave.\r"
 		result = gen_C1(ramanshift, laser_nm ,  wl_norm ,  norm_pnt)
-	endif
+
+	elseif ( waveExists ( maskWave ))
+		print "\tMask wave is supplied. Using it for fit.\r"
+		result = gen_C1_mask (ramanshift, laser_nm ,  wl_norm ,   norm_pnt , maskWave)
+	endif	
+	
+	
 	//--------------------------------------------------------------
 	// wave references (C0 and C1 should exist in present folder)
 	wave C0
 	wave C1
 	//--------------------------------------------------------------
+	
 	if (result ==2 )
-		wave C1_out = set_nan_correspond_to_mask (C1, maskWave)
-		wave C1= C1_out
+	
+		if (set_mask_nan == 1)
+			printf "\n\n\tset_mask_nan parameter is set to 1. Masked region in the intensity corr will be set to Nan.\r"
+			
+			wave C1_out = set_nan_correspond_to_mask (C1, maskWave)
+			wave C1= C1_out
+		else
+			printf "\n\n\tset_mask_nan parameter not set to 1.\r"
+		endif	
 	endif	
 	//--------------------------------------------------------------	
 	make /d /o /n=(nPnts) intensity_corr = (C0/C1)
@@ -169,7 +185,7 @@ STATIC function gen_C1(ramanshift, laser_nm ,  wl_input   norm_pnt)
 	killwaves /Z  $fname	
 
 	
-	if (waveexists(C1) && coefs[1]< 5000 )
+	if (waveexists(C1) && coefs[1]< 6000 )   # 6000 is the temperature of the lamp in K, to large value may be unreasonable.
 		return 1
 	endif		
 
@@ -200,7 +216,7 @@ STATIC function gen_C1_mask (ramanshift, laser_nm ,  wl_input  , norm_pnt , mask
 	
 	// defining initial coefs
 	coefs[0] = 0.856e-18
-	coefs[1] = 2659 // 0.856e-18
+	coefs[1] = 2659 // 0.856e-18 
 	
 	
 	Display /N=genC0C1 /K=1 wl_input vs abs_wavenumber
@@ -240,7 +256,7 @@ STATIC function gen_C1_mask (ramanshift, laser_nm ,  wl_input  , norm_pnt , mask
 	fname="Res_"+nameofwave(wl_input)
 	killwaves /Z  $fname		
 	
-	if (waveexists(C1) && coefs[1]< 5000 )
+	if (waveexists(C1) && coefs[1]< 6000 ) # 6000 is the temperature of the lamp in K, to large value may be unreasonable.
 		return 2
 	endif	
 	
@@ -328,4 +344,3 @@ STATIC function /WAVE set_nan_correspond_to_mask (input, mask)
 end	
 // -------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------
-
