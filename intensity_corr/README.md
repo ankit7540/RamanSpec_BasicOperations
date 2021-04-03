@@ -1,11 +1,14 @@
 
-Intensity calibration based on a three step procedure has been established in our research. (See [10.1002/jrs.5955](https://onlinelibrary.wiley.com/doi/full/10.1002/jrs.5955))
+Intensity calibration of Raman spectra based on a three step procedure has been established in our research. (See [10.1002/jrs.5955](https://onlinelibrary.wiley.com/doi/full/10.1002/jrs.5955) for more details)
 
-These three corrections for the intensity calibration steps are labelled as C0, C1 and C2. C0 is derived from the vector representing the x-axis. C1 comes from the fit of the boradband white-light spectrum and C2 comes from the Raman intensities (which are 
-already corrected using C0 and C1. See the above paper for more details.  The total correction is given as  C0/(C1 * C2).
+These three corrections for the intensity calibration steps are labelled as C0, C1 and C2.
 
-The procedure file in this folder, `gen_correction_v2.ipf` has the function for generating the first two corrections, and returns : (C0/C1). For common Raman measurements where very high accuracy in the relative Raman 
-intensities is not required, this might suffice.
+ - C0 is derived from the vector representing the x-axis. 
+ - C1 comes from the fit of the broadband white-light spectrum ( which is corrected for C0) to the number of photons from a black-body emitter. 
+ - and C2 comes from the Raman intensities (which are already corrected using C0 and C1. See the above paper for more details.  
+The total correction is given as  C0/(C1 * C2).
+
+The procedure file in this folder, `gen_correction_v2.ipf` has the function defined as `gen_C0_C1 ` for generating the first two corrections, and which returns : (C0/C1). For common Raman measurements where very high accuracy in the relative Raman intensities is not required, this might suffice.
 
 
 ----
