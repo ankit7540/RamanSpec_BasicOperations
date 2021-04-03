@@ -12,12 +12,12 @@
 
 function gen_C0_C1 ( ramanshift , laser_nm , wl_wave ,   norm_pnt , [ maskWave ] )
 
-	wave ramanshift		// relative
-	variable laser_nm		// laser wavelength, nm
-	wave wl_wave			// white_light spectra, unnormalized, 1D or 2D
-	variable norm_pnt		// normalization index, pnt
+	wave ramanshift		// relative, vector
+	variable laser_nm		// laser wavelength, nm, scalar
+	wave wl_wave			// white_light spectra, un-normalized, 1D or 2D, vector
+	variable norm_pnt		// normalization index, pnt, scalar
 	
-	wave maskWave //  optional, supply mask for wl fitting , for eg.  maskWave = mask_1D
+	wave maskWave //  optional, supply mask for wl fitting , for eg.  maskWave = mask_1D, vector
 	
 	variable nPnts = dimsize(ramanshift, 0)
 	variable mid = nPnts/2
