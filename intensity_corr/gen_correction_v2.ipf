@@ -185,7 +185,7 @@ STATIC function gen_C1(ramanshift, laser_nm ,  wl_input   norm_pnt)
 	killwaves /Z  $fname	
 
 	
-	if (waveexists(C1) && coefs[1]< 6000 )   # 6000 is the temperature of the lamp in K, too large value may be unreasonable.
+	if (waveexists(C1) && coefs[1]< 6000 )   // 6000 is the temperature of the lamp in K, too large value may be unreasonable.
 		return 1
 	endif		
 
@@ -256,7 +256,7 @@ STATIC function gen_C1_mask (ramanshift, laser_nm ,  wl_input  , norm_pnt , mask
 	fname="Res_"+nameofwave(wl_input)
 	killwaves /Z  $fname		
 	
-	if (waveexists(C1) && coefs[1]< 6000 ) # 6000 is the temperature of the lamp in K, too large value may be unreasonable.
+	if (waveexists(C1) && coefs[1]< 6000 ) // 6000 is the temperature of the lamp in K, too large value may be unreasonable.
 		return 2
 	endif	
 	
