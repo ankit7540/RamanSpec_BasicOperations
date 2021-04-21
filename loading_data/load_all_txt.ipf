@@ -1,5 +1,5 @@
 
-// To laod all delimited txt files in a folder
+// To load all delimited txt files in a folder
 
 // The file has the format
 
@@ -7,7 +7,7 @@
 //  <data>   <data> ... ...
 
 
-// For each loaded file, a new folder is created in the databrowser
+// For each loaded file, a new folder is created in the data-browser
 // the column in the txt file is loaded as waves ( autonamed as the header)
 
 function loadTXT_files_all()
@@ -51,6 +51,9 @@ function loadTXT_files_all()
 		newdatafolder /o/s $folder_name
 
 		// /A=Auto, /J = delimited text, /W = header as name, /D=double precision
+		//  Refer to LoadWave (page 1708 and so on) in manual for other flags
+		//  replace /J with /G to load general text
+		
 		LoadWave /A /J /W /D  /P=path fileName;
 
 		setdatafolder savedDF
