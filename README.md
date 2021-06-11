@@ -8,7 +8,7 @@ This repository contains procedures for the analysis of spectra. These can be, f
 
 Refer to the few lines before each function to understand the purpose and the scheme. Edits might be needed for the correct usage of a function depending on the specific dataset.
 
-Question and suggestions are welcome via the `Issues` tab.
+Question / comments / suggestions are welcome via the `Issues` tab.
 
 ***
 
