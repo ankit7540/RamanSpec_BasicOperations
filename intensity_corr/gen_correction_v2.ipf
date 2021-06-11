@@ -1,5 +1,3 @@
-
-
 // -------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------
 
@@ -82,6 +80,7 @@ function gen_C0_C1 ( ramanshift , laser_nm , wl_wave ,   norm_pnt , [ maskWave ,
 	endif	
 	//--------------------------------------------------------------	
 	make /d /o /n=(nPnts) intensity_corr = (C0/C1)
+	Note intensity_corr , "This is equal to (C0/C1). Multiply your spectra to this wave for intensity calibration."
 	
 	printf "\n\tintensity_corr generated. Done. This is equal to (C0/C1)\r"
 	
