@@ -5,6 +5,9 @@
 
 function  remove1col_from_selected_2D ( col_index )
 
+        // This function operates on a selection of 2D waves (selection made 
+	//    in the data browser)
+
 	variable col_index
 	string nameV 
  	variable index // for initial count of waves
