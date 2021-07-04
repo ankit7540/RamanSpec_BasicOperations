@@ -15,7 +15,7 @@ The procedure file in this folder, `gen_correction.ipf` has the function defined
 
 <hr>
 
-For a python version of this program see this repository : [IntensityCalbr at GitHub](https://github.com/ankit7540/IntensityCalbr)
+For a python version of this program see this repository : [IntensityCalbr at GitHub](https://github.com/ankit7540/IntensityCalbr/tree/master/PythonModule/determine_C0_C1_correction) 
 
 ----
 See following paper on accurate intensity calibration:<br><br>
