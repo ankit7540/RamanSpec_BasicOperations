@@ -1,22 +1,22 @@
 
 // -----------------------------------------------------------------------------------------
 
-// To remove a column from multiple 2D wave 
+// To remove a column from multiple 2D wave
+// This function operates on a selection of 2D waves (selection made
+//    in the data browser)
 
 function  remove1col_from_selected_2D ( col_index )
 
-        // This function operates on a selection of 2D waves (selection made 
-	//    in the data browser)
-
 	variable col_index
-	string nameV 
+
+	string nameV
  	variable index // for initial count of waves
  	variable i
  	variable cols
- 	
+
 	string cdf =getdatafolder(1)
 	printf "\tPresent folder : %s\r" cdf
-	
+
 	// Count the number of files
 	do
 		nameV  = getbrowserselection(index)
@@ -25,26 +25,26 @@ function  remove1col_from_selected_2D ( col_index )
 		endif
  		index += 1
 	while(1)
-	
-	print "\tNumber of selected waves: ", index	
+
+	print "\tNumber of selected waves: ", index
 
 	for (i=0; i<index; i=i+1)
 	 	nameV = getbrowserselection(i)
 		wave selected=$nameV
-			 
-	 	cols		=	dimsize (selected, 1) 
-	
+
+	 	cols		=	dimsize (selected, 1)
+
 	 	if (cols>1)
 	 		remove_col_from_2D ( selected , col_index)
 	 	else
  			printf "\t%s is 1D. Skipping.\r", NameOfWave(selected)
 	 	endif
-	
-	endfor 
+
+	endfor
 
 	printf "\tWaves processed : %g \r", index
 
-end 
+end
 
 //----------------------------------------------------------------------------------------------------------------
 
@@ -53,27 +53,27 @@ end
 // Only removes if the original number of columns is more than 3 in the
 // 	2D wave.
 
-// This operates on a single 2D wave 
+// This operates on a single 2D wave
 
-// returns the original modified wave 
+// returns the original modified wave
 function remove_col_from_2D (input2D, col_index)
 	wave input2D
 	variable col_index
-	
+
 	variable nCols
 	nCols = dimsize (input2D, 1)
-	
+
 	// only if nCols > cutoff operation is done
 	// edit cutoff for control of how small 2D waves are edited
 	variable cutoff =3
-	
-	if (nCols > cutoff) 
+
+	if (nCols > cutoff)
 		printf "\t    Removing col %g from %s \r", col_index, nameofwave(input2D)
 		DeletePoints/M=1 col_index ,1, input2D	// delete col operation
 		// delete 1 column along axis=1 which is col
 	else
-		printf "\t    Not touching %s, nCols = %g \r",  nameofwave(input2D), nCols			 	
+		printf "\t    Not touching %s, nCols = %g \r",  nameofwave(input2D), nCols
 	endif
-end	
+end
 
 // -----------------------------------------------------------------------------------------
