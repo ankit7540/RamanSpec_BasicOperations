@@ -10,6 +10,8 @@ Refer to the few lines before each function to understand the purpose and the sc
 
 Question / comments / suggestions are welcome via the `Issues` tab.
 
+ - Some functions are better documented in comparison to others.
+
 ***
 
 ## Citing this repository
