@@ -1,7 +1,7 @@
 
-//////////////////////////////////////////////////////
-/////////////  Define common constants ///////////////
-//////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+/////////////      Define common constants    ///////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 constant const_h = 6.62607015e-34		// Joules. second
 constant const_c = 299792458				// meters per second
@@ -126,4 +126,58 @@ function wavelength_to_frequency( wavelength_nm)
 
 	return const_c / (wavelength_nm * 1e-9)
 end
-//////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+//  frequency in GHz to wavelength
+//	accepts variable as argument 
+
+function  frequency_GHz_to_wavelength(  freq_GHz )
+	variable freq_GHz
+
+	return const_c / (freq_GHz)
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+//  frequency in GHz to wavelength
+//	accepts array as argument 
+
+function /WAVE frequencyGHz_to_wavelength_vec (freq_ghz)
+	wave	freq_ghz
+	
+	variable nRow = dimsize (freq_ghz, 0)
+	make /o /d /n=(nRow) wavelength_nm = 299792458 / freq_ghz [p]
+	return wavelength_nm
+	
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+//  frequency in GHz to absolute wavenumber
+//	accepts array as argument 
+
+function /WAVE frequencyGHz_to_absWavenum_vec (freq_ghz)
+	wave freq_ghz
+	
+	variable nRow = dimsize (freq_ghz, 0)
+	make /o /d /n=(nRow) abs_wavenum = 1e7 / ( 299792458 / freq_ghz [p] )
+	return abs_wavenum
+
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////	
+
+// absolute wavenumber to frequency in Gigahertz
+
+function absWavenum_to_freqGHz ( wavenum )
+	variable wavenum
+	
+	variable wavelength
+	variable frequency
+	
+	wavelength = 1e7 / wavenum
+	frequency = ( 299792458 / (wavelength * 1e-9 )  )
+	return frequency / 1e9
+end
+///////////////////////////////////////////////////////////////////////////////////////////
