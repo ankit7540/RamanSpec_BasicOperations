@@ -71,9 +71,9 @@ function subtract_baseline_from_selected (pnt_start, pnt_end)
  		index += 1
 	while(1)
 
-	print "\tNumber of waves: ", index
+	print "\tNumber of selected waves: ", index
 
-	// process each spectra
+	// process each 1D spectra
 	for (i=0; i<index; i=i+1)
 	 	name = getbrowserselection(i)
 	 	//print i, namev
