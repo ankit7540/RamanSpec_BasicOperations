@@ -26,73 +26,69 @@ Download citation file : [Bibtex](https://raw.githubusercontent.com/ankit7540/Ra
 ## Project tree
 
 ```
-📦
-|
-├─ LICENSE.md
-├─ README.md
-├─ _config.yml
-|
-├─ 2D_operations
-│  ├─ 1D_to_2D_rearrangements.ipf
-│  ├─ Analyse_2D_band_area_extraction.ipf
-│  ├─ README.rst
-│  ├─ average_2D.ipf
-│  ├─ data_combine_delete.ipf
-│  ├─ fitting_2D_data.ipf
-│  ├─ mathematical_ops.ipf
-│  ├─ merge_2D.ipf
-│  └─ remove_col_from2D.ipf
-|
-|
-├─ background_correction
-│  └─ baseline_sub.ipf
-|
-├─ basic_programming
-│  └─ s0_basic_of_functions.ipf
-|
-├─ citation
-│  ├─ RamanOps.RIS
-│  └─ RamanOps.bib
-|
-├─ custom_fit_functions
-│  └─ bands_withBaseline.ipf
-|
-├─ discussion
-│  ├─ Curve_fitting_Gaussian.pxp
-│  ├─ Curve_fitting_Gaussian_run.pxp
-│  ├─ fitting_many_gaussians_using_function.pxp
-│  └─ plotting_custom.pxp
-|
-├─ eqn_solve
-│  ├─ lin_eq.ipf
-│  ├─ non_linear_optimizaton.ipf
-│  └─ quadratic.ipf
-|
-├─ folder_operations
-│  ├─ extract_from_folders.ipf
-│  └─ folder_contents.ipf
-|
-├─ image_analysis
-│  ├─ README.md
-│  ├─ batch_binning.ipf
-│  └─ binning.ipf
-|
-├─ intensity_corr
-│  ├─ README.md
-│  ├─ gen_correction.ipf
-│  └─ validation_antiStokes_Stokes.ipf
-|
-├─ loading_data
-│  ├─ README.md
-│  ├─ load_all_itx.ipf
-│  └─ load_all_txt.ipf
-|
-├─ noise_analysis
-│  ├─ noise_analysis.ipf
-│  └─ remove_cosmic_noise.ipf
-|
-└─ plotting
-   ├─ add_offset_graph.ipf
-   ├─ plot_2D.ipf
-   └─ plot_customization.ipf
+└── RamanSpec_BasicOperations
+    ├── 2D_operations
+    │   ├── 1D_to_2D_rearrangements.ipf
+    │   ├── Analyse_2D_band_area_extraction.ipf
+    │   ├── average_2D.ipf
+    │   ├── data_combine_delete.ipf
+    │   ├── fitting_2D_data.ipf
+    │   ├── mathematical_ops.ipf
+    │   ├── merge_2D.ipf
+    │   ├── README.md
+    │   └── remove_col_from2D.ipf
+    ├── background_correction
+    │   ├── baseline_sub.ipf
+    │   └── README.md
+    ├── basic_programming
+    │   ├── s0_basic_of_functions.ipf
+    │   └── s1_wave_analysis.ipf
+    ├── citation
+    │   ├── RamanOps.bib
+    │   └── RamanOps.RIS
+    ├── _config.yml
+    ├── custom_fit_functions
+    │   └── bands_withBaseline.ipf
+    ├── data_generation
+    │   ├── README.md
+    │   └── sample_gen.ipf
+    ├── discussion
+    │   ├── Curve_fitting_Gaussian.pxp
+    │   ├── Curve_fitting_Gaussian_run.pxp
+    │   ├── fitting_many_gaussians_using_function.pxp
+    │   ├── plotting_custom.pxp
+    │   └── README.md
+    ├── eqn_solve
+    │   ├── lin_eq.ipf
+    │   ├── non_linear_optimizaton.ipf
+    │   └── quadratic.ipf
+    ├── folder_operations
+    │   ├── extract_from_folders.ipf
+    │   ├── folder_contents.ipf
+    │   └── README.md
+    ├── general
+    │   ├── README.md
+    │   └── spectroscopy.ipf
+    ├── image_analysis
+    │   ├── batch_binning.ipf
+    │   ├── binning.ipf
+    │   └── README.md
+    ├── intensity_corr
+    │   ├── gen_correction.ipf
+    │   ├── README.md
+    │   └── validation_antiStokes_Stokes.ipf
+    ├── LICENSE.md
+    ├── loading_data
+    │   ├── load_all_itx.ipf
+    │   ├── load_all_txt.ipf
+    │   └── README.md
+    ├── noise_analysis
+    │   ├── noise_analysis.ipf
+    │   └── remove_cosmic_noise.ipf
+    ├── plotting
+    │   ├── add_offset_graph.ipf
+    │   ├── plot_2D.ipf
+    │   └── plot_customization.ipf
+    └── README.md
+
 ```
