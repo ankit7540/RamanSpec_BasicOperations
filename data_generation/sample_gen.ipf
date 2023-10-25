@@ -119,3 +119,89 @@ function sample_2D_2gauss ()
 
 end
 ///////////////////////////////////////////////////////////////////////////////
+// to generate 2D sample dataset with 2 convoluted lorentzian peaks and
+//			a linear baseline
+
+
+function sample_2D_2lor ()
+
+	variable nrows = 300
+	variable nCols = 20
+	variable slope
+	variable offset
+
+	variable i
+
+	make /FREE /d /n=(3) lCoefs1
+	make /FREE /d /n=(3) lCoefs2
+
+	make /o /d /n=(nRows, nCols) sampleD_2D_2lor
+	make /o /d /n=(nRows) xaxis = p/8
+	make /FREE /n=(nRows) tmp
+
+	variable center = (wavemin(xaxis) + wavemax(xaxis) ) / 2
+	print center
+
+	for (i=0 ; i< nCols ;  i=i+1)
+
+		slope = 0.0115
+		offset = 0.15
+		lCoefs1 [0] = 25
+		lCoefs1 [1] = center + enoise(0.25) // + 0.275 * i
+		lCoefs1 [2] = 1.05
+
+		lCoefs2 [0] = 15
+		lCoefs2 [1] = center + enoise(0.25)   + 0.25 * center
+		lCoefs2 [2] = 1.365
+
+
+		tmp = enoise(0.0655) + lCoefs1[0] /((xaxis-lCoefs1[1])^2+ (lCoefs1[2]^2) ) + slope * xaxis + offset + lCoefs2[0] /((xaxis-lCoefs2[1])^2+(lCoefs2[2]^2 ) )
+
+		sampleD_2D_2lor [][i] = tmp[p]
+
+
+
+	endfor
+
+end
+
+///////////////////////////////////////////////////////////////////////////////
+
+function sample_2D_lor ()
+
+	variable nrows = 300
+	variable nCols = 20
+	variable slope
+	variable offset
+
+	variable i
+
+	make /FREE /d /n=(3) lCoefs
+
+	make /o /d /n=(nRows, nCols) sampleD_2D_lor
+	make /o /d /n=(nRows) xaxis = p/8
+	make /FREE /n=(nRows) tmp
+
+	variable center = (wavemin(xaxis) + wavemax(xaxis) ) / 2
+	print center
+
+	for (i=0 ; i< nCols ;  i=i+1)
+
+		slope = 0.0115
+		offset = 0.15
+		lCoefs [0] = 25
+		lCoefs [1] = center + enoise(0.25) // + 0.205 * i
+		lCoefs [2] = 1.1025
+
+
+		tmp = enoise(0.0655) + lCoefs[0] /((xaxis-lCoefs[1])^2+ (lCoefs[2]^2) ) + slope * xaxis + offset
+
+		sampleD_2D_lor [][i] = tmp[p]
+
+
+
+	endfor
+
+end
+
+///////////////////////////////////////////////////////////////////////////////
