@@ -40,7 +40,7 @@ function loadTXT_files_all()
 		mod_filename = ReplaceString(" ", fileName, "_" )
 
     // remove extension from the filename
-		mod_filename = ReplaceString(".txt", mod_filename, "" )
+		mod_filename = ReplaceString(  ext , mod_filename, "" )
 
     // replacing part of filename which are not needed
 		mod_filename = ReplaceString("__", mod_filename, "" )
@@ -53,7 +53,7 @@ function loadTXT_files_all()
 		// /A=Auto, /J = delimited text, /W = header as name, /D=double precision
 		//  Refer to LoadWave (page 1708 and so on) in manual for other flags
 		//  replace /J with /G to load general text
-		
+
 		LoadWave /A /J /W /D  /P=path fileName;
 
 		setdatafolder savedDF
