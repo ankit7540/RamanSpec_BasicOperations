@@ -60,6 +60,24 @@ end
 
 //////////////////////////////////////////////////////
 
+// to compute the absorbance using path length
+//	epsilon (molar absorptivity coef) and concentration
+//	Beer-Lamberts Law
+
+function epsilon_BL( absorbance, concentration, depth)
+	variable absorbance
+	variable concentration
+	variable depth
+
+	return absorbance / ( concentration * depth )
+	// if concentration in Moles
+	// and if depth in cm
+	//		unit : M^(-1) cm^(-1)
+
+end
+
+//////////////////////////////////////////////////////
+
 // to compute energy in Joule for one photon of particular wavelength
 // wavelength : unit nm, for example, 532
 
@@ -130,7 +148,7 @@ end
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 //  frequency in GHz to wavelength
-//	accepts variable as argument 
+//	accepts variable as argument
 
 function  frequency_GHz_to_wavelength(  freq_GHz )
 	variable freq_GHz
@@ -141,41 +159,41 @@ end
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 //  frequency in GHz to wavelength
-//	accepts array as argument 
+//	accepts array as argument
 
 function /WAVE frequencyGHz_to_wavelength_vec (freq_ghz)
 	wave	freq_ghz
-	
+
 	variable nRow = dimsize (freq_ghz, 0)
 	make /o /d /n=(nRow) wavelength_nm = 299792458 / freq_ghz [p]
 	return wavelength_nm
-	
+
 end
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 //  frequency in GHz to absolute wavenumber
-//	accepts array as argument 
+//	accepts array as argument
 
 function /WAVE frequencyGHz_to_absWavenum_vec (freq_ghz)
 	wave freq_ghz
-	
+
 	variable nRow = dimsize (freq_ghz, 0)
 	make /o /d /n=(nRow) abs_wavenum = 1e7 / ( 299792458 / freq_ghz [p] )
 	return abs_wavenum
 
 end
 
-///////////////////////////////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////////////////////////////
 
 // absolute wavenumber to frequency in Gigahertz
 
 function absWavenum_to_freqGHz ( wavenum )
 	variable wavenum
-	
+
 	variable wavelength
 	variable frequency
-	
+
 	wavelength = 1e7 / wavenum
 	frequency = ( 299792458 / (wavelength * 1e-9 )  )
 	return frequency / 1e9
