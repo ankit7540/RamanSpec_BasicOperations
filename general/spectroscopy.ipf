@@ -199,3 +199,24 @@ function absWavenum_to_freqGHz ( wavenum )
 	return frequency / 1e9
 end
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+
+// spectral output of a black-body heated to a temperature
+// wavelength in nanometers
+// temperature in Kelvin
+
+function blackBody_spectral_output (wavelength, T)
+	variable wavelength // nm
+	variable T			// Kelvin
+	
+	variable wv = wavelength * 1e-9
+	
+	variable factorA = (const_h * const_c * 8 * Pi ) / (wv ^ 5)
+	variable factorB = 1/ (( exp  (const_h * const_c /  (wv * const_k * T )) ) - 1 )
+	return factorA * factorB
+	
+end	
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
