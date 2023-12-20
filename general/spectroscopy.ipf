@@ -208,15 +208,29 @@ end
 function blackBody_spectral_output (wavelength, T)
 	variable wavelength // nm
 	variable T			// Kelvin
-	
+
 	variable wv = wavelength * 1e-9
-	
+
 	variable factorA = (const_h * const_c * 8 * Pi ) / (wv ^ 5)
 	variable factorB = 1/ (( exp  (const_h * const_c /  (wv * const_k * T )) ) - 1 )
 	return factorA * factorB
-	
-end	
+
+end
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
+// to convert <log epsilon> data to absorbance for a given concentration (in Moles)
+//	and path length (in centimeters)
+
+function logepsilon_to_absorbance( lgepsilon, path_length_cm, concentration_M)
+
+	variable lgepsilon			// log (base 10) of epsilon
+	variable path_length_cm	// path length in cm
+	variable concentration_M	// molar concentration
+
+	return alog(lgepsilon) * path_length_cm * concentration_M
+
+end
+
+///////////////////////////////////////////////////////////////////////////////////////////
