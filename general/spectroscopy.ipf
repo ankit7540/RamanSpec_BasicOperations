@@ -60,8 +60,8 @@ end
 
 //////////////////////////////////////////////////////
 
-// to compute the absorbance using path length
-//	epsilon (molar absorptivity coef) and concentration
+// to compute the epsilon using the absorbance, concentration
+//  and path length
 //	Beer-Lamberts Law
 
 function epsilon_BL( absorbance, concentration, depth)
