@@ -49,9 +49,9 @@ end
 //   are created in the same folder as the original wave
 
 function subtract_baseline_from_selected (pnt_start, pnt_end)
-	variable  pnt_start  // start point (in pixel)
-	variable  pnt_end   // end point (in pixel)
-					   //  start point < end point
+	variable  pnt_start  // start point (in pixel, i.e. point index)
+	variable  pnt_end   // end point (in pixel, i.e. point index)
+					   //  start point < end point is assumed
 
 	string name
  	variable index // for initial count of waves

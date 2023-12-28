@@ -2,7 +2,7 @@
 
 ***
 
-`Curve_fitting_Gaussian.pxp`  is a packed Igor experiment file containing three one-dimensional waves. One as the xaxis and the rest two as gaussian peaks with some noise and baseline. Can be used to study baseline fitting.
+`Curve_fitting_Gaussian.pxp`  is a packed Igor experiment file containing three one-dimensional waves. One as the xaxis and the rest two as gaussian peaks with some noise and baseline. Can be used to study/demonstrate baseline fitting.
 
 
 
