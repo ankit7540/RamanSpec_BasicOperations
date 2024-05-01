@@ -32,7 +32,7 @@ Download citation file : [Bibtex](https://raw.githubusercontent.com/ankit7540/Ra
 	title = {A repository containing procedures for Raman data analysis in IgorPro.},
 	howpublished = {\url{https://github.com/ankit7540/RamanSpec_BasicOperations}},
   doi={10.5281/zenodo.4506283},
-	note = {Accessed: 2022-07-15}
+	note = {Accessed: 2023-12-15}
 }
 ```
 
@@ -42,7 +42,7 @@ Download citation file : [Bibtex](https://raw.githubusercontent.com/ankit7540/Ra
 TY  - WEB
 AU  - Raj, Ankit
 DO  - 10.5281/zenodo.4506283
-M1  - 07-15-2022
+M1  - 12-15-2023
 PY  - 2021
 ST  - Online repository of procedures for Raman data analysis in IgorPro
 TI  - Online repository of procedures for Raman data analysis in IgorPro
