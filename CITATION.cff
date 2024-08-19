@@ -1,0 +1,28 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: RamanSpec_BasicOperations
+message: Procedure in IgorPro for analysis of spectroscopic data
+type: software
+authors:
+  - given-names: Ankit
+    family-names: Raj
+    email: ankit.sciwork@gmail.com
+    affiliation: Gakushuin University
+    orcid: 'https://orcid.org/0000-0002-2495-3354'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.10513173
+repository-code: 'https://github.com/ankit7540/RamanSpec_BasicOperations'
+abstract: >-
+  This repository contains procedures for the analysis of
+  spectra. These can be, for example, Raman or IR spectra or
+  others. The procedures are for analyzing raw data (x, y
+  columns) of data loaded in IgorPro application.
+keywords:
+  - Raman spectroscopy
+  - Data analysis
+  - Infrared spectroscopy
+  - Igor Pro
+license: GPL-3.0

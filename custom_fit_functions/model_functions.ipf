@@ -24,7 +24,9 @@ End
 //----------------------------------------------------------------------------------------------------------------
 
 // This function is listed in the documentation of Ocean Optics mini-spectrometer for wavelength
-//	calibration 
+//	calibration
+// USB4000 Fiber Optic Spectrometer, Appendix A Calibrating the Wavelength of the USB4000
+//  Page 19/36, Document Number 211-00000-000-02-1006
 
 Function CFF_OceanOpt_WavelengthCal(w,x) : FitFunc
 	Wave w
