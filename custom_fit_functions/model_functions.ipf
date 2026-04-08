@@ -49,3 +49,34 @@ Function CFF_OceanOpt_WavelengthCal(w,x) : FitFunc
 End
 
 //----------------------------------------------------------------------------------------------------------------
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+// asymmetric function by Korepanov and Sedlovets described in
+//    V. I. Korepanov and D. M. Sedlovets, An asymmetric fitting function for condensed-phase Raman spectroscopy,
+//     Analyst 143, 2674 (2018)
+
+// suitable for fitting asymmetric peaks with no baseline
+// combine with other functions to generate custom functions
+
+Function CFF_asym_pV_no_BSL(x, a, center, fwhm, asym, gaussshare)
+    Variable x, a, center, fwhm, asym, gaussshare
+    
+    Variable wn, x_distorted
+    Variable Lor_asym, Gauss_asym, voigt_asym
+    
+    wn = x - center
+    
+    x_distorted = wn * (1 - exp(-wn^2 / (2 * (2 * fwhm)^2)) * asym * wn / fwhm)
+    
+    Lor_asym = fwhm / (x_distorted^2 + fwhm^2 / 4) / (2 * pi)
+    
+    Gauss_asym = sqrt(4 * ln(2) / pi) / fwhm * exp(-(x_distorted^2 * 4 * ln(2)) / fwhm^2)
+    
+    voigt_asym = (1 - gaussshare) * Lor_asym + gaussshare * Gauss_asym
+    
+    return a * voigt_asym
+End
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
