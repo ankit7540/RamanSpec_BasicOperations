@@ -1,10 +1,12 @@
+//------------------------------------------------------------------------------------------------------
 //Procedure to plot 2-D waves on plot with some offset //
 // TO USE- Select a 2D wave in browser and then run the command in Command window. //
 // FOLLOWING IS FOR NO OFFSET //
 
-function plotall_nooffset( nCols)
+function plotall_nooffset( nCols, xaxis)
 
 	variable nCols	// Number of columns to plot
+	wave xaxis 		// 1D wave
 
 	wave twave
 	string name		// name of trace wave
@@ -35,11 +37,11 @@ function plotall_nooffset( nCols)
 		n1= NameOfWave (twave)
 		tracename=n1+"#"
 
-		display /w=(350,230,720,420) /k=1 $name
+		display /w=(350,230,720,420) /k=1 $name vs xaxis
 
 		// Iteratively append to graph while applying offset
 		for (i=1 ; i!=nCols  ; i=i+1)
-			AppendToGraph $name[][(i)]
+			AppendToGraph $name[][(i)] vs xaxis
 			sprintf fullname, "%s%g",tracename,i
 			ModifyGraph rgb($fullname)=(8738,8738,8738)	// color
 		endfor
@@ -60,9 +62,10 @@ end
 
 // TO USE- Select a 2D wave in browser and then run the command in Command window. //
 
-function plotall_withoffset(nCols)
+function plotall_withoffset(nCols, xaxis)
 
 	variable nCols	// Number of columns to plot
+	wave 	  xaxis 		// 1D wave
 
 	wave twave
 	string name			// name of trace wave
@@ -103,16 +106,16 @@ function plotall_withoffset(nCols)
 		n1= NameOfWave (twave)
 		tracename=n1+"#"
 
-		display /w=(350,230,720,420) /k=1 $name
+		display /w=(350,230,720,420) /k=1 $name vs xaxis
 
 		variable color_step = floor(65536 / nCols+1)
 
 		// Iteratively append to graph while applying offset
 		for (i=1 ; i!=nCols  ; i=i+1)
-			AppendToGraph $name[][(i)]
+			AppendToGraph $name[][(i)] vs xaxis
 			trace_offset=i*ofst
 			sprintf fullname, "%s%g",tracename,i
-			//print fullname
+
 			ModifyGraph offset ($fullname)={0,(trace_offset)}			// y-offset
 			ModifyGraph rgb($fullname)=(  65000-( color_step *i) , 8736 , color_step * i )	// color
 			// print color_step * i

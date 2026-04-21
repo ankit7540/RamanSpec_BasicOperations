@@ -32,7 +32,7 @@ Download citation file : [Bibtex](https://raw.githubusercontent.com/ankit7540/Ra
 	title = {A repository containing procedures for Raman data analysis in IgorPro.},
 	howpublished = {\url{https://github.com/ankit7540/RamanSpec_BasicOperations}},
   doi={10.5281/zenodo.4506283},
-	note = {Accessed: 2023-12-15}
+	note = {Accessed: 2026-04-14}
 }
 ```
 
@@ -42,8 +42,8 @@ Download citation file : [Bibtex](https://raw.githubusercontent.com/ankit7540/Ra
 TY  - WEB
 AU  - Raj, Ankit
 DO  - 10.5281/zenodo.4506283
-M1  - 12-15-2023
-PY  - 2021
+M1  - 04-14-2026
+PY  - 2026
 ST  - Online repository of procedures for Raman data analysis in IgorPro
 TI  - Online repository of procedures for Raman data analysis in IgorPro
 UR  - https://github.com/ankit7540/RamanSpec_BasicOperations
@@ -124,3 +124,12 @@ ER  -
    └─ plot_customization.ipf
 
 ```
+
+
+## Used extensively in the following research works
+
+- Accurate intensity calibration of multichannel spectrometers using Raman intensity ratios ([10.1002/jrs.6221](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/jrs.6221))
+
+- Raman spectra and structure of hydrogen-bonded water oligomers in tetrahydrofuran–H2O binary solutions ([10.1002/jrs.6381](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/abs/10.1002/jrs.6381))
+
+- Posthandling Spectral Information Enhancement for Single Cell Raman Molecular Mapping Analysis ([10.1021/acs.analchem.5c03915](https://pubs.acs.org/doi/10.1021/acs.analchem.5c03915))
