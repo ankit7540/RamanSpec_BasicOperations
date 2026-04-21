@@ -80,3 +80,35 @@ End
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
+//------------------------------------------------------------------------------------------------ 
+
+Function cmn_Heaviside_conv_gauss(w,x) : FitFunc
+	Wave w
+	Variable x
+
+	//CurveFitDialog/ These comments were created by the Curve Fitting dialog. Altering them will
+	//CurveFitDialog/ make the function less convenient to work with in the Curve Fitting dialog.
+	//CurveFitDialog/ Equation:
+	//CurveFitDialog/ f(x) = (N/2)*(1+erf((x-posn)/(sqrt(2)*width))) + C
+	//CurveFitDialog/ End of Equation
+	//CurveFitDialog/ Independent Variables 1
+	//CurveFitDialog/ x
+	//CurveFitDialog/ Coefficients 4
+	//CurveFitDialog/ w[0] = N
+	//CurveFitDialog/ w[1] = posn
+	//CurveFitDialog/ w[2] = width
+	//CurveFitDialog/ w[3] = C
+
+	return (w[0]/2)*(1+erf((x-w[1])/(sqrt(2)*w[2]))) + w[3]
+	
+	
+	// Usage of width :
+	// BeamWaistRadius_w0 = 2*w[2]        // standard 1/e^2 radius
+	// BeamDiameter = 4*w[2]              // standard 1/e^2 diameter
+	// FWHM = 2.35482*w[2]                // intensity FWHM
+
+	
+End
+
+//------------------------------------------------------------------------------------------------ 
+
