@@ -10,4 +10,4 @@ This plotting folder contains scripts focused on visualization utilities for Ram
  
  Example:
 
-![Alt text](./docs/img/2D_plot_with_xaxis.png)
+![Alt text](./../docs/img/2D_plot_with_xaxis.png)
