@@ -97,7 +97,7 @@ Function cmn_Heaviside_conv_gauss(w,x) : FitFunc
 	//CurveFitDialog/ w[0] = sign_factor
 	//CurveFitDialog/ w[1] = posn
 	//CurveFitDialog/ w[2] = width
-	//CurveFitDialog/ w[3] = highest_intensity
+	//CurveFitDialog/ w[3] = lowest_intensity
 
 	return (w[0]/2)*(1+erf((x-w[1])/(sqrt(2)*w[2]))) + w[3]
 	
